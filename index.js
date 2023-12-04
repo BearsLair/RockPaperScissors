@@ -1,30 +1,43 @@
 function getComputerChoice() {
-    //List all possible choices to choose from
-    let choices = ["Rock", "Paper", "Scissors"];
-    //Pick one random whole number from 0 to 2, and assign it to a variable
+    //Switch statement for Rock, Paper, Scissors based on randomly chosen number
+    let computerSelection = "";
+
+    switch (Math.floor(Math.random() * 3)) {
+        case 0:
+            computerSelection = "rock";
+            break;
+        case 1:
+            computerSelection = "paper";
+            break;
+        case 2:
+            computerSelection = "scissors";
+            break;
+    }
+    
     //Return that variable out of the function
+    return computerSelection;
 };
 
 function playRound(playerSelection,computerSelection) {
     //Variable for result
-    roundResult = "";
+    let roundResult = "";
     //If-else statements for all possible cases, including ties
     if (playerSelection == "rock" && computerSelection == "rock") {
-        roundResult === "Tied!";
+        roundResult = "Tied!";
     } else if (playerSelection == "rock" && computerSelection == "paper") {
-        roundResult === "You lose! Paper beats rock."
+        roundResult = "You lose! Paper beats rock."
     } else if (playerSelection == "rock" && computerSelection == "scissors") {
-        roundResult === "You win! Rock beats scissors.";
+        roundResult = "You win! Rock beats scissors.";
     } else if (playerSelection == "paper" && computerSelection == "rock") {
-        roundResult === "You win! Paper beats rock.";
+        roundResult = "You win! Paper beats rock.";
     } else if (playerSelection == "paper" && computerSelection == "paper") {
-        roundResult === "Tied!";
+        roundResult = "Tied!";
     } else if (playerSelection == "paper" && computerSelection == "scissors") {
-        roundResult === "You lose! Scissors beats paper.";
+        roundResult = "You lose! Scissors beats paper.";
     } else if (playerSelection == "scissors" && computerSelection == "rock") {
-        roundResult === "You lose! Rock beats scissors.";
+        roundResult = "You lose! Rock beats scissors.";
     } else if (playerSelection == "scissors" && computerSelection == "scissors") {
-        roundResult === "Tied";
+        roundResult = "Tied";
     }
 
     return roundResult;
