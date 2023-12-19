@@ -53,3 +53,10 @@ function game() {
         alert(roundResult);
     }
 }
+
+const rockBtn = document.querySelector(".btns > #rock");
+const paperBtn = document.querySelector(".btns > #paper");
+const scissorsBtn = document.querySelector(".btns > #scissors");
+const compSelect = document.querySelector(".results > h4");
+const result = document.querySelector(".results > h3");
+const startover = document.querySelector("#startover");
