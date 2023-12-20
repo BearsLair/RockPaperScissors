@@ -1,22 +1,29 @@
 function getComputerChoice() {
-    let computerSelection = 0;
     //Random number from 0-2 chosen
     let computerChoice = Math.floor(Math.random() * 3);
 
     //If-else statement to translate number to string
     if (computerChoice === 0) {
-        computerSelection = "rock";
+        return computerSelection = "rock";
     } else if (computerChoice === 1) {
-        computerSelection = "paper";
+        return computerSelection = "paper";
     } else if (computerChoice === 2) {
-        computerSelection = "scissors";
+        return computerSelection = "scissors";
     };
-   return computerSelection
 };
 
+function displayComputerChoice() {
+    if (computerSelection = "rock") {
+        compSelect.textContent = "The Computer chose Rock!";
+    } else if (computerSelection = "paper") {
+        compSelect.textContent = "The Computer chose Paper!";
+    } else if (computerSelection = "scissors") {
+        compSelect.textContent = "The Computer chose Scissors!";
+    }
+}
+
 function playRound(playerSelection,computerSelection) {
-    //Variable for result
-    let roundResult = "";
+    
     //If-else statements for all possible cases, including ties
     if (playerSelection == "rock" && computerSelection == "rock") {
         return roundResult = "Tied! You both picked rock!";
@@ -38,20 +45,7 @@ function playRound(playerSelection,computerSelection) {
 };
 
 function game() {
-    for (let i = 0; i < 5; i++) {
-        //Prompt the user for their selection of either rock, paper, or scissors (not case-senstive), assign to playerSelection variable
-        let playerSelection = "";
-        let computerSelection = "";
-        playerSelection = prompt("Round " + (i + 1) + ". " + "Rock, paper, or scissors?");
-        alert("You picked " + playerSelection + ".");
-        //Call getComputerChoice
-        computerSelection = getComputerChoice();
-        alert("The computer picks " + computerSelection + ".");
-        //Evaluate winner
-        let roundResult = playRound(playerSelection,computerSelection)
-        //Print winner to screen
-        alert(roundResult);
-    }
+    
 }
 
 const rockBtn = document.querySelector(".btns > #rock");
@@ -60,3 +54,16 @@ const scissorsBtn = document.querySelector(".btns > #scissors");
 const compSelect = document.querySelector(".results > h4");
 const result = document.querySelector(".results > h3");
 const startover = document.querySelector("#startover");
+
+rockBtn.addEventListener("click", () => {
+    let playerSelection = "rock";
+    
+    getComputerChoice();
+    displayComputerChoice();
+
+    console.log(playerSelection);
+    console.log(computerSelection);
+
+    playRound(playerSelection,computerSelection);
+    console.log(roundResult);
+})
