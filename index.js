@@ -1,3 +1,10 @@
+const rockBtn = document.querySelector(".btns > #rock");
+const paperBtn = document.querySelector(".btns > #paper");
+const scissorsBtn = document.querySelector(".btns > #scissors");
+const compSelect = document.querySelector(".results > h4");
+const result = document.querySelector(".results > h3");
+const startover = document.querySelector("#startover");
+
 function getComputerChoice() {
   //Random number from 0-2 chosen
   let computerChoice = Math.floor(Math.random() * 3);
@@ -13,12 +20,11 @@ function getComputerChoice() {
 }
 
 function displayComputerChoice() {
-  let compSelect = "";
-  if ((computerSelection = "rock")) {
+  if (computerSelection === "rock") {
     compSelect.textContent = "The Computer chose Rock!";
-  } else if ((computerSelection = "paper")) {
+  } else if (computerSelection === "paper") {
     compSelect.textContent = "The Computer chose Paper!";
-  } else if ((computerSelection = "scissors")) {
+  } else if (computerSelection === "scissors") {
     compSelect.textContent = "The Computer chose Scissors!";
   }
 }
@@ -44,51 +50,27 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
-const rockBtn = document.querySelector(".btns > #rock");
-const paperBtn = document.querySelector(".btns > #paper");
-const scissorsBtn = document.querySelector(".btns > #scissors");
-const compSelect = document.querySelector(".results > h4");
-const result = document.querySelector(".results > h3");
-const startover = document.querySelector("#startover");
+rockBtn.addEventListener("click", () => {
+  playerSelection = "rock";
+  Game();
+});
 
-for (let i = 0; i < 6; i++) {
-  let playerSelection = "";
-  let computerSelection = "";
-  let roundResult = "";
+paperBtn.addEventListener("click", () => {
+  playerSelection = "paper";
+  Game();
+});
 
-  rockBtn.addEventListener("click", () => {
-    playerSelection = "rock";
+scissorsBtn.addEventListener("click", () => {
+  playerSelection = "scissors";
+  Game();
+});
 
-    getComputerChoice();
-    displayComputerChoice();
+function Game() {
+  getComputerChoice();
+  displayComputerChoice();
 
-    playRound(playerSelection, computerSelection);
-    console.log(roundResult);
+  playRound(playerSelection, computerSelection);
+  console.log(roundResult);
 
-    result.textContent = roundResult;
-  });
-
-  paperBtn.addEventListener("click", () => {
-    playerSelection = "paper";
-
-    getComputerChoice();
-    displayComputerChoice();
-
-    playRound(playerSelection, computerSelection);
-    console.log(roundResult);
-
-    result.textContent = roundResult;
-  });
-
-  scissorsBtn.addEventListener("click", () => {
-    playerSelection = "scissors";
-
-    getComputerChoice();
-    displayComputerChoice();
-
-    playRound(playerSelection, computerSelection);
-    console.log(roundResult);
-
-    result.textContent = roundResult;
-  });
+  result.textContent = roundResult;
 }
