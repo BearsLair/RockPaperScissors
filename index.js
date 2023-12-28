@@ -2,8 +2,11 @@ const rockBtn = document.querySelector(".btns > #rock");
 const paperBtn = document.querySelector(".btns > #paper");
 const scissorsBtn = document.querySelector(".btns > #scissors");
 const compSelect = document.querySelector(".results > h4");
+const round = document.querySelector(".round");
 const result = document.querySelector(".results > h3");
 const startover = document.querySelector("#startover");
+let currentRound = 1;
+round.innerHTML = currentRound;
 
 function getComputerChoice() {
   //Random number from 0-2 chosen
@@ -56,16 +59,40 @@ function playRound(playerSelection, computerSelection) {
 rockBtn.addEventListener("click", () => {
   playerSelection = "rock";
   Game();
+  if (currentRound < 5) {
+    currentRound++;
+    round.innerHTML = currentRound;
+  } else {
+    rockBtn.disabled = true;
+    paperBtn.disabled = true;
+    scissorsBtn.disabled = true;
+  }
 });
 
 paperBtn.addEventListener("click", () => {
   playerSelection = "paper";
   Game();
+  if (currentRound < 5) {
+    currentRound++;
+    round.innerHTML = currentRound;
+  } else {
+    rockBtn.disabled = true;
+    paperBtn.disabled = true;
+    scissorsBtn.disabled = true;
+  }
 });
 
 scissorsBtn.addEventListener("click", () => {
   playerSelection = "scissors";
   Game();
+  if (currentRound < 5) {
+    currentRound++;
+    round.innerHTML = currentRound;
+  } else {
+    rockBtn.disabled = true;
+    paperBtn.disabled = true;
+    scissorsBtn.disabled = true;
+  }
 });
 
 function Game() {
@@ -73,7 +100,15 @@ function Game() {
   displayComputerChoice();
 
   playRound(playerSelection, computerSelection);
-  console.log(roundResult);
 
   result.textContent = roundResult;
 }
+
+startover.addEventListener("click", () => {
+  rockBtn.disabled = false;
+  paperBtn.disabled = false;
+  scissorsBtn.disabled = false;
+
+  currentRound = 1;
+  round.innerHTML = currentRound;
+});
