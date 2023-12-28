@@ -110,5 +110,8 @@ startover.addEventListener("click", () => {
   scissorsBtn.disabled = false;
 
   currentRound = 1;
+
   round.innerHTML = currentRound;
+  compSelect.innerHTML = "The computer awaits your decision!";
+  result.innerHTML = "What will the result be?";
 });
