@@ -87,16 +87,17 @@ function Game() {
   result.textContent = roundResult;
 
   Score(playerSelection, computerSelection);
-  console.log(user);
-  console.log(comp);
 
-  if ((comp = 5) || (user = 5)) {
+  if (comp == 5 || user == 5) {
     rockBtn.disabled = true;
     paperBtn.disabled = true;
     scissorsBtn.disabled = true;
 
     Message(comp, user);
   }
+
+  console.log(user);
+  console.log(comp);
 }
 
 function Score(playerSelection, computerSelection) {
@@ -135,9 +136,9 @@ startover.addEventListener("click", () => {
   compSelect.innerHTML = "The computer awaits your decision!";
   result.innerHTML = "What will the result be?";
 
-  let user = 0;
+  user = 0;
   userScore.innerHTML = user;
-  let comp = 0;
+  comp = 0;
   compScore.innerHTML = comp;
 
   match.innerHTML = "";
