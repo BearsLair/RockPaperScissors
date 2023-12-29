@@ -2,15 +2,11 @@ const rockBtn = document.querySelector(".btns > #rock");
 const paperBtn = document.querySelector(".btns > #paper");
 const scissorsBtn = document.querySelector(".btns > #scissors");
 const compSelect = document.querySelector(".results > h4");
-const round = document.querySelector(".round");
 const result = document.querySelector(".results > h3");
 const startover = document.querySelector("#startover");
 const userScore = document.querySelector("#userscore");
 const compScore = document.querySelector("#compscore");
 const match = document.querySelector("#matchresult");
-
-let currentRound = 1;
-round.innerHTML = currentRound;
 
 let user = 0;
 userScore.innerHTML = user;
@@ -70,46 +66,16 @@ function playRound(playerSelection, computerSelection) {
 rockBtn.addEventListener("click", () => {
   playerSelection = "rock";
   Game();
-  if (currentRound < 5) {
-    currentRound++;
-    round.innerHTML = currentRound;
-  } else {
-    rockBtn.disabled = true;
-    paperBtn.disabled = true;
-    scissorsBtn.disabled = true;
-
-    Message(comp, user);
-  }
 });
 
 paperBtn.addEventListener("click", () => {
   playerSelection = "paper";
   Game();
-  if (currentRound < 5) {
-    currentRound++;
-    round.innerHTML = currentRound;
-  } else {
-    rockBtn.disabled = true;
-    paperBtn.disabled = true;
-    scissorsBtn.disabled = true;
-
-    Message(comp, user);
-  }
 });
 
 scissorsBtn.addEventListener("click", () => {
   playerSelection = "scissors";
   Game();
-  if (currentRound < 5) {
-    currentRound++;
-    round.innerHTML = currentRound;
-  } else {
-    rockBtn.disabled = true;
-    paperBtn.disabled = true;
-    scissorsBtn.disabled = true;
-
-    Message(comp, user);
-  }
 });
 
 function Game() {
@@ -121,6 +87,16 @@ function Game() {
   result.textContent = roundResult;
 
   Score(playerSelection, computerSelection);
+  console.log(user);
+  console.log(comp);
+
+  if ((comp = 5) || (user = 5)) {
+    rockBtn.disabled = true;
+    paperBtn.disabled = true;
+    scissorsBtn.disabled = true;
+
+    Message(comp, user);
+  }
 }
 
 function Score(playerSelection, computerSelection) {
@@ -156,9 +132,6 @@ startover.addEventListener("click", () => {
   paperBtn.disabled = false;
   scissorsBtn.disabled = false;
 
-  currentRound = 1;
-
-  round.innerHTML = currentRound;
   compSelect.innerHTML = "The computer awaits your decision!";
   result.innerHTML = "What will the result be?";
 
