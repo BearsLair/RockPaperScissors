@@ -48,3 +48,9 @@ h4 {
   flex-direction: row;
   justify-content: center;
 }
+
+.match {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}

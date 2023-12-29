@@ -7,6 +7,7 @@ const result = document.querySelector(".results > h3");
 const startover = document.querySelector("#startover");
 const userScore = document.querySelector("#userscore");
 const compScore = document.querySelector("#compscore");
+const match = document.querySelector("#matchresult");
 
 let currentRound = 1;
 round.innerHTML = currentRound;
@@ -61,6 +62,8 @@ function playRound(playerSelection, computerSelection) {
     return (roundResult = "Rock beats scissors! You lose the round!");
   } else if (playerSelection == "scissors" && computerSelection == "scissors") {
     return (roundResult = "You both picked scissors! Round tied!");
+  } else if (playerSelection == "scissors" && computerSelection == "paper") {
+    return (roundResult = "Scissors beats paper! You win the round!");
   }
 }
 
@@ -74,6 +77,8 @@ rockBtn.addEventListener("click", () => {
     rockBtn.disabled = true;
     paperBtn.disabled = true;
     scissorsBtn.disabled = true;
+
+    Message(comp, user);
   }
 });
 
@@ -87,6 +92,8 @@ paperBtn.addEventListener("click", () => {
     rockBtn.disabled = true;
     paperBtn.disabled = true;
     scissorsBtn.disabled = true;
+
+    Message(comp, user);
   }
 });
 
@@ -100,6 +107,8 @@ scissorsBtn.addEventListener("click", () => {
     rockBtn.disabled = true;
     paperBtn.disabled = true;
     scissorsBtn.disabled = true;
+
+    Message(comp, user);
   }
 });
 
@@ -112,8 +121,6 @@ function Game() {
   result.textContent = roundResult;
 
   Score(playerSelection, computerSelection);
-  console.log(user);
-  console.log(comp);
 }
 
 function Score(playerSelection, computerSelection) {
@@ -121,7 +128,7 @@ function Score(playerSelection, computerSelection) {
     return null;
   } else if (playerSelection == "rock" && computerSelection == "paper") {
     comp++;
-    return (userScore.innerHTML = comp);
+    return (compScore.innerHTML = comp);
   } else if (playerSelection == "rock" && computerSelection == "scissors") {
     user++;
     return (userScore.innerHTML = user);
@@ -138,6 +145,9 @@ function Score(playerSelection, computerSelection) {
     return (compScore.innerHTML = comp);
   } else if (playerSelection == "scissors" && computerSelection == "scissors") {
     return null;
+  } else if (playerSelection == "scissors" && computerSelection == "paper") {
+    user++;
+    return (userScore.innerHTML = user);
   }
 }
 
@@ -156,4 +166,16 @@ startover.addEventListener("click", () => {
   userScore.innerHTML = user;
   let comp = 0;
   compScore.innerHTML = comp;
+
+  match.innerHTML = "";
 });
+
+function Message(comp, user) {
+  if (comp > user) {
+    return (match.innerHTML = "The computer wins the match!");
+  } else if (user > comp) {
+    return (match.innerHTML = "You win the match!");
+  } else if (user == comp) {
+    return (match.innerHTML = "The match is tied!");
+  }
+}
