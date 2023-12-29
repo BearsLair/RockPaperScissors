@@ -29,14 +29,11 @@ function getComputerChoice() {
 
 function displayComputerChoice() {
   if (computerSelection === "rock") {
-    compSelect.textContent =
-      "You chose " + playerSelection + ". " + "The Computer chose Rock!";
+    compSelect.textContent = "The Computer chose Rock!";
   } else if (computerSelection === "paper") {
-    compSelect.textContent =
-      "You chose " + playerSelection + ". " + "The Computer chose Paper!";
+    compSelect.textContent = "The Computer chose Paper!";
   } else if (computerSelection === "scissors") {
-    compSelect.textContent =
-      "You chose " + playerSelection + ". " + "The Computer chose Scissors!";
+    compSelect.textContent = "The Computer chose Scissors!";
   }
 }
 
