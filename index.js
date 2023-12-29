@@ -5,8 +5,16 @@ const compSelect = document.querySelector(".results > h4");
 const round = document.querySelector(".round");
 const result = document.querySelector(".results > h3");
 const startover = document.querySelector("#startover");
+const userScore = document.querySelector("#userscore");
+const compScore = document.querySelector("#compscore");
+
 let currentRound = 1;
 round.innerHTML = currentRound;
+
+let user = 0;
+userScore.innerHTML = user;
+let comp = 0;
+compScore.innerHTML = comp;
 
 function getComputerChoice() {
   //Random number from 0-2 chosen
@@ -38,21 +46,21 @@ function displayComputerChoice() {
 function playRound(playerSelection, computerSelection) {
   //If-else statements for all possible cases, including ties
   if (playerSelection == "rock" && computerSelection == "rock") {
-    return (roundResult = "Tied! You both picked rock!");
+    return (roundResult = "You both picked rock! Round tied!");
   } else if (playerSelection == "rock" && computerSelection == "paper") {
-    return (roundResult = "You lose! Paper beats rock.");
+    return (roundResult = "Paper beats rock! You lose the round!");
   } else if (playerSelection == "rock" && computerSelection == "scissors") {
-    return (roundResult = "You win! Rock beats scissors.");
+    return (roundResult = "Rock beats scissors! You win the round!");
   } else if (playerSelection == "paper" && computerSelection == "rock") {
-    return (roundResult = "You win! Paper beats rock.");
+    return (roundResult = "Paper beats rock! You win the round!");
   } else if (playerSelection == "paper" && computerSelection == "paper") {
-    return (roundResult = "Tied! You both picked paper!");
+    return (roundResult = "You both picked paper! Round tied!");
   } else if (playerSelection == "paper" && computerSelection == "scissors") {
-    return (roundResult = "You lose! Scissors beats paper.");
+    return (roundResult = "Scissors beats paper! You lose the round!");
   } else if (playerSelection == "scissors" && computerSelection == "rock") {
-    return (roundResult = "You lose! Rock beats scissors.");
+    return (roundResult = "Rock beats scissors! You lose the round!");
   } else if (playerSelection == "scissors" && computerSelection == "scissors") {
-    return (roundResult = "Tied! You both picked scissors!");
+    return (roundResult = "You both picked scissors! Round tied!");
   }
 }
 
@@ -102,6 +110,35 @@ function Game() {
   playRound(playerSelection, computerSelection);
 
   result.textContent = roundResult;
+
+  Score(playerSelection, computerSelection);
+  console.log(user);
+  console.log(comp);
+}
+
+function Score(playerSelection, computerSelection) {
+  if (playerSelection == "rock" && computerSelection == "rock") {
+    return null;
+  } else if (playerSelection == "rock" && computerSelection == "paper") {
+    comp++;
+    return (userScore.innerHTML = comp);
+  } else if (playerSelection == "rock" && computerSelection == "scissors") {
+    user++;
+    return (userScore.innerHTML = user);
+  } else if (playerSelection == "paper" && computerSelection == "rock") {
+    user++;
+    return (userScore.innerHTML = user);
+  } else if (playerSelection == "paper" && computerSelection == "paper") {
+    return null;
+  } else if (playerSelection == "paper" && computerSelection == "scissors") {
+    comp++;
+    return (compScore.innerHTML = comp);
+  } else if (playerSelection == "scissors" && computerSelection == "rock") {
+    comp++;
+    return (compScore.innerHTML = comp);
+  } else if (playerSelection == "scissors" && computerSelection == "scissors") {
+    return null;
+  }
 }
 
 startover.addEventListener("click", () => {
@@ -114,4 +151,9 @@ startover.addEventListener("click", () => {
   round.innerHTML = currentRound;
   compSelect.innerHTML = "The computer awaits your decision!";
   result.innerHTML = "What will the result be?";
+
+  let user = 0;
+  userScore.innerHTML = user;
+  let comp = 0;
+  compScore.innerHTML = comp;
 });
